@@ -11,7 +11,7 @@ const authMiddleWare = async (request, response, next) => {
 			.where('idusuarios', payload.userId)
 			.first();
 
-		if (!user) {
+		if (user.length < 1) {
 			return response.sendStatus(401);
 		}
 		request.auth = user;
