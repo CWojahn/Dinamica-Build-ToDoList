@@ -1,10 +1,8 @@
 const connection = require('../database/connection');
-const jwt = require('../utils/jwt');
 module.exports = {
 	async index(request, response) {
 		const { page = 1 } = request.query;
 		const { idobra } = request.body;
-		const { idusuarios, nome } = request.auth;
 
 		const [count] = await connection('atividades')
 			.where('atividades.idobra', idobra)
