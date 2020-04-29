@@ -4,10 +4,10 @@ module.exports = {
 	development: {
 		client: 'mysql',
 		connection: {
-			host: 'db-dinamica-cable.crhekfd1zqj2.sa-east-1.rds.amazonaws.com',
-			user: 'cableadmin',
-			password: 'n1#ut7iP?cith84heT#iwL#ROMl',
-			database: 'db-dinamica',
+			host: 'yourhost',
+			user: 'yourusername',
+			password: 'yourpassword',
+			database: 'yourdatabase',
 		},
 
 		migrations: {
@@ -45,10 +45,10 @@ module.exports = {
 	production: {
 		client: 'mysql',
 		connection: {
-			host: 'db-dinamica-cable.crhekfd1zqj2.sa-east-1.rds.amazonaws.com',
-			user: 'cableadmin',
-			password: 'n1#ut7iP?cith84heT#iwL#ROMl',
-			database: 'db-dinamica',
+			host: 'yourhost',
+			user: 'yourusername',
+			password: 'yourpassword',
+			database: 'yourdatabase',
 		},
 		pool: {
 			min: 2,
