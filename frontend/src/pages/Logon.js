@@ -14,10 +14,10 @@ export default function Logon() {
 	async function handleLogin(e) {
 		e.preventDefault();
 		try {
-            const response = await (await api.get('login')).headers( {Authorization : 'Basic '+ username + password});
+            const response = await api.get('login', {auth: {username, password}});
             console.log(response.data.token)
-			//localStorage.setItem('usertoken', id);
-			//localStorage.setItem('ongName', response.data.name);
+			localStorage.setItem('usertoken', response.data.token);
+			localStorage.setItem('userId', response.data.user.idusuarios);
 			//history.push('/profile');
 		} catch (err) {
 			alert(err + 'Falha no login, tente novamente.');
