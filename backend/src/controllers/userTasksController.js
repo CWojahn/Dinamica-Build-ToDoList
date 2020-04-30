@@ -40,7 +40,37 @@ module.exports = {
 
 	async create(request, response) {},
 
-	async update(request, response) {},
+	async update(request, response) {
+		const {
+			lmstatus,
+			projstatus,
+			datalm,
+			dataproj,
+			idtarefas,
+			perclm,
+			percproj,
+			idatividades,
+		} = request.body;
+
+		const { userId } = request.auth;
+
+		try {
+			const taskUpdateDone = await connection('tarefas_atividade')
+				.where('idtarefas', idtarefas)
+				.update({ lmstatus, projstatus, datalm, dataproj });
+
+			const activityPercentUpdateDone = await connection('atividades')
+				.where('idatividades', idatividades)
+				.update({ perclm, percproj });
+
+			// if (taskUpdateDone == 1 && activityPercentUpdateDone == 1) {
+			return response.sendStatus(200);
+			//}
+		} catch (error) {
+			console.log(error);
+			return response.status(400).send(error);
+		}
+	},
 
 	async delete(request, response) {
 		const { idtarefas } = request.params;
