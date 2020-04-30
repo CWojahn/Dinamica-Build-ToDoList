@@ -3,6 +3,7 @@ module.exports = {
 	async index(request, response) {
 		const { page = 1 } = request.query;
 		const { idobra } = request.body;
+		const { idusuarios } = request.auth;
 
 		const [count] = await connection('atividades')
 			.where('atividades.idobra', idobra)
@@ -21,23 +22,10 @@ module.exports = {
 			.whereNull('concluida')
 			.limit(5)
 			.offset((page - 1) * 5)
-			.select([
-				'idatividades',
-				'atividade',
-				'iniciolmprev',
-				'fimlmprev',
-				'inicioprojprev',
-				'fimprojprev',
-				'idcontroleOS',
-				'peso',
-				'tipo',
-				'percproj',
-				'perclm',
-				'usuarios.nome',
-			]);
+			.select(['atividades.*', 'nome']);
 
-		var result = activities.map(function (el) {
-			var o = Object.assign({}, el);
+		const result = activities.map(function (el) {
+			const o = Object.assign({}, el);
 			if (
 				(Date.now - activities.inicioprojprev) *
 					(100 / (activities.fimprojprev - activities.inicioprojprev)) <=

@@ -7,6 +7,7 @@ module.exports = {
 		const [username, password] = Buffer.from(hash, 'base64')
 			.toString()
 			.split(':');
+
 		try {
 			const user = await connection('usuarios')
 				.where('username', username)

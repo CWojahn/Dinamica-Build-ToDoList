@@ -13,4 +13,5 @@ routes.get('/activity', authMiddleWare, userActivitiesController.index);
 routes.get('/builds', authMiddleWare, userBuildsController.index);
 
 routes.get('/tasks', authMiddleWare, userTasksController.index);
+
 module.exports = routes;
